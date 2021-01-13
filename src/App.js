@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import TodoForm from './components/TodoForm';
+import TodoResults from './components/TodoResults';
+
 
 function App() {
+  const [list, setList] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Your List</h1>
+      {list.map((input, i) =>(
+        <TodoResults input={input} list={list} setList={setList} index={i}/>
+      ))}
+      <TodoForm list={list} setList={setList}/>
     </div>
   );
 }
